@@ -1,0 +1,16 @@
+# Copy this file to the root of your repository and set or adjust
+# the following environment variables:
+#
+# - DIGITALOCEAN_ACCESS_TOKEN: Enter your access token
+# - DIGITALOCEAN_DRIVER_ARGS: adjust driver args as needed
+# - DOCKER_MACHINE_NAME: defaults to byon-dockerhub-{hostname} if left blank;
+version: '3.6'
+services:
+    sut:
+        build:
+            context: .
+            dockerfile: Dockerfile.byon-dockerhub.test
+        environment:
+            DIGITALOCEAN_ACCESS_TOKEN: 'XXXXXXXXXXXX'
+            DIGITALOCEAN_DRIVER_ARGS: '--digitalocean-region nyc3 --digitalocean-size s-1vcpu-2gb'
+            DOCKER_MACHINE_NAME:

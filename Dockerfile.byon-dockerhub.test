@@ -1,0 +1,5 @@
+FROM quantrocket/byon-dockerhub
+
+COPY / /tmp/byon-dockerhub/
+
+WORKDIR /tmp/byon-dockerhub
