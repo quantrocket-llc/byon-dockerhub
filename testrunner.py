@@ -25,6 +25,8 @@ class TestRunner:
 
     def run(self):
         test_files = self._collect_test_files()
+        if not test_files:
+            return
 
         try:
             self._provision_node()
@@ -46,8 +48,7 @@ class TestRunner:
         test_file_glob = "{0}/*._test.yml".format(self.src_dir)
         test_files = glob.glob(test_file_glob)
         if not test_files:
-            raise ValueError("No files found matching {0}".format(test_file_glob))
-
+            print("No files found matching {0}".format(test_file_glob))
         return test_files
 
     def _provision_node(self):
