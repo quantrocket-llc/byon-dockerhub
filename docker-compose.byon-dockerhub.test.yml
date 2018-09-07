@@ -12,5 +12,5 @@ services:
             dockerfile: Dockerfile.byon-dockerhub.test
         environment:
             DIGITALOCEAN_ACCESS_TOKEN: 'XXXXXXXXXXXX'
-            DIGITALOCEAN_DRIVER_ARGS: '--digitalocean-region nyc3 --digitalocean-size s-1vcpu-2gb'
+            DIGITALOCEAN_DRIVER_ARGS: '--digitalocean-region nyc3 --digitalocean-size s-1vcpu-2gb --digitalocean-tags byon-dockerhub'
             DOCKER_MACHINE_NAME:
