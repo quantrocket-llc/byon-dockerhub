@@ -25,7 +25,8 @@ function testdocker {
 
     docker-compose -f $YAMLFILE -p byon-dockerhub build && docker-compose -f $YAMLFILE -p byon-dockerhub up -d
 
-    RETURNCODE=$(docker wait byon-dockerhub_sut_1)
+    SUT_CONTAINER=$(docker ps --filter 'name=byon-dockerhub_sut_' --format '{{.Names}}')
+    RETURNCODE=$(docker wait $SUT_CONTAINER)
 
     docker-compose -f $YAMLFILE -p byon-dockerhub down --volumes --remove-orphans
 
