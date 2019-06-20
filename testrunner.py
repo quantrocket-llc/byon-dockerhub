@@ -69,9 +69,15 @@ class TestRunner:
     def _destroy_node(self):
         print("Destroying remote node")
         cmd = "docker-machine rm -y {0}".format(self.env_name)
-        output = subprocess.check_output(
-            cmd.split(), stderr=subprocess.STDOUT,
-            universal_newlines=True)
+        try:
+            output = subprocess.check_output(
+                cmd.split(), stderr=subprocess.STDOUT,
+                universal_newlines=True)
+        except subprocess.CalledProcessError:
+            output = subprocess.check_output(
+                cmd.split(), stderr=subprocess.STDOUT,
+                universal_newlines=True)
+                
         print(output)
 
 if __name__ == "__main__":
